@@ -1,5 +1,6 @@
 # WebStartLearning
 DOM, BOM, JS, CSS, Java WebEngine
+* [Ресурсы для разработчиков](https://developer.mozilla.org/ru/)
 
 ## window
 * [DOM](https://learn.javascript.ru/browser-environment)
