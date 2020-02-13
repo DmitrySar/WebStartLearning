@@ -38,7 +38,24 @@ public class Controller {
 //        String c = document.getElementById("a").getAttribute("value");
         HTMLInputElement element = (HTMLInputElement) document.getElementById("c");
         document.getElementById("sel").setTextContent(element.getValue());
-       element.select();
+//       element.select();
+//        Thread injectionTime = new Thread(new Task<Void>() {
+//            @Override
+//            protected Void call() throws Exception {
+//                while (true) {
+//                    Platform.runLater(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            document.getElementById("sel").setTextContent(new Date().toString());
+//                        }
+//                    });
+//                    sleep(1000);
+//                }
+//            }
+//        });
+//        injectionTime.setDaemon(true);
+//        injectionTime.start();
+
     }
 
     @FXML
