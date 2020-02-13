@@ -42,15 +42,11 @@ public class Controller {
 //        Thread injectionTime = new Thread(new Task<Void>() {
 //            @Override
 //            protected Void call() throws Exception {
-//                while (true) {
-//                    Platform.runLater(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            document.getElementById("sel").setTextContent(new Date().toString());
-//                        }
-//                    });
+//                while (!interrupted()) {
+//                    Platform.runLater(() -> document.getElementById("sel").setTextContent(new Date().toString()));
 //                    sleep(1000);
 //                }
+//                return null;
 //            }
 //        });
 //        injectionTime.setDaemon(true);
