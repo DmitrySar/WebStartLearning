@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <title>Sample</title>
-    <link rel="stylesheet" type="text/css" href="example.css">
 </head>
-
+<style>
+    body {
+        font-size: 32px;
+    }
+    button  {
+        font-size: 32px;
+    }
+    input  {
+        font-size: 32px;
+        width: 100px;
+    }
+    .fill {
+        background-color: rgb(179, 230, 179);
+        font-family: Tahoma,serif;
+    }
+</style>
 <script type="text/javascript">
     function fill(s) {
-        document.getElementById('sel').style.background = "red";
+        document.getElementById(s).style.background = "rgb(179, 230, 179)";
     }
 
     function sum(idA, idB, idC) {
-        a = document.getElementById(idA).value;
-        b = document.getElementById(idB).value;
-        let c = Number(a) + Number(b);
-        document.getElementById(idC).value = c;
+        let a = document.getElementById(idA).value;
+        let b = document.getElementById(idB).value;
+        document.getElementById(idC).value = Number(a) + Number(b);
     }
 </script>
 
@@ -23,7 +36,7 @@
     hhhhhhh
 </p>
 <p>
-    <button type="button" onclick="fill('ssss')">click</button>
+    <button type="button" onclick="fill('sel')">click</button>
 </p>
 <p>
     <input type="text" id="a" value="1">
@@ -31,6 +44,11 @@
     <input type="text" id="b" value="2">
     <button onclick="sum('a', 'b', 'c')">=</button>
     <input type="text" id="c">
+</p>
+<p>
+    <button onclick="app.toConsole()">
+        injectFromJava
+    </button>
 </p>
 </body>
 </html>

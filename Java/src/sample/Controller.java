@@ -1,17 +1,22 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Font;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import netscape.javascript.JSObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.html.HTMLInputElement;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static java.lang.Thread.interrupted;
+import static java.lang.Thread.sleep;
 
 public class Controller {
 
@@ -63,5 +68,22 @@ public class Controller {
         Files.lines(Paths.get("Java/res/index.html")).forEach(s -> editor.appendText(s + "\n"));
         engine = view.getEngine();
         engine.loadContent(editor.getText());
+        Thread injectObjectToHTML = new Thread(() -> {
+            while (!interrupted()) {
+
+                try {
+                    Platform.runLater(() -> {
+                    JSObject injectionObject = (JSObject) engine.executeScript("window");
+                    injectionObject.setMember("app", new Counter());
+                });
+                    sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
+        injectObjectToHTML.setDaemon(true);
+        injectObjectToHTML.start();
     }
 }
