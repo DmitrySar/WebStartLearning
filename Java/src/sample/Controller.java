@@ -47,7 +47,7 @@ public class Controller {
         executeScript();
         Document document = engine.getDocument();
         HTMLInputElement element = (HTMLInputElement) document.getElementById("c");
-        document.getElementById("sel").setTextContent(element.getValue());
+        document.getElementById("injection").setTextContent(element.getValue());
 //       injection information to web page from Java uses Thread
         Thread injectionTime = new Thread(() -> {
             while (!interrupted()) {
