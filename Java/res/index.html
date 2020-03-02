@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sample</title>
+    <link rel="stylesheet" type="text/css" href="example.css">
+</head>
+
+<script type="text/javascript">
+    function fill(s) {
+        document.getElementById('sel').style.background = "red";
+    }
+
+    function sum(idA, idB, idC) {
+        a = document.getElementById(idA).value;
+        b = document.getElementById(idB).value;
+        let c = Number(a) + Number(b);
+        document.getElementById(idC).value = c;
+    }
+</script>
+
+<body>
+<p id = "sel">
+    hhhhhhh
+</p>
+<p>
+    <button type="button" onclick="fill('ssss')">click</button>
+</p>
+<p>
+    <input type="text" id="a" value="1">
+    +
+    <input type="text" id="b" value="2">
+    <button onclick="sum('a', 'b', 'c')">=</button>
+    <input type="text" id="c">
+</p>
+</body>
+</html>
