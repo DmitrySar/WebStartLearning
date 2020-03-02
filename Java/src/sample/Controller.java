@@ -14,6 +14,7 @@ import org.w3c.dom.html.HTMLInputElement;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 
 import static java.lang.Thread.interrupted;
 import static java.lang.Thread.sleep;
@@ -45,22 +46,21 @@ public class Controller {
     private void testId() {
         executeScript();
         Document document = engine.getDocument();
-//        String c = document.getElementById("a").getAttribute("value");
         HTMLInputElement element = (HTMLInputElement) document.getElementById("c");
         document.getElementById("sel").setTextContent(element.getValue());
-//       element.select();
-//        Thread injectionTime = new Thread(new Task<Void>() {
-//            @Override
-//            protected Void call() throws Exception {
-//                while (!interrupted()) {
-//                    Platform.runLater(() -> document.getElementById("sel").setTextContent(new Date().toString()));
-//                    sleep(1000);
-//                }
-//                return null;
-//            }
-//        });
-//        injectionTime.setDaemon(true);
-//        injectionTime.start();
+//       injection information to web page from Java uses Thread
+        Thread injectionTime = new Thread(() -> {
+            while (!interrupted()) {
+                Platform.runLater(() -> document.getElementById("sel").setTextContent(new Date().toString()));
+                try {
+                    sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        injectionTime.setDaemon(true);
+        injectionTime.start();
 
     }
 
