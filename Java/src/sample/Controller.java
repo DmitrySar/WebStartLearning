@@ -43,6 +43,7 @@ public class Controller {
 
     @FXML
     private void testId() {
+        executeScript();
         Document document = engine.getDocument();
 //        String c = document.getElementById("a").getAttribute("value");
         HTMLInputElement element = (HTMLInputElement) document.getElementById("c");
@@ -61,6 +62,11 @@ public class Controller {
 //        injectionTime.setDaemon(true);
 //        injectionTime.start();
 
+    }
+
+    @FXML
+    private void executeScript() {
+        ((JSObject) engine.executeScript("window")).call("fill", "sel");
     }
 
     @FXML
